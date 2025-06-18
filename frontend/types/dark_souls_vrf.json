@@ -1,0 +1,174 @@
+{
+  "address": "3yFrLcHmwCpNjeSR4sFNVd1K3BTzwVc3Nz13ToeHnRfs",
+  "metadata": {
+    "name": "dark_souls_vrf",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "callback_generate_character",
+      "discriminator": [
+        189,
+        241,
+        11,
+        143,
+        19,
+        22,
+        126,
+        239
+      ],
+      "accounts": [
+        {
+          "name": "vrf_program_identity",
+          "signer": true
+        },
+        {
+          "name": "player",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "randomness",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "generate_character",
+      "discriminator": [
+        20,
+        98,
+        39,
+        214,
+        60,
+        33,
+        112,
+        158
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "player"
+        },
+        {
+          "name": "oracle_queue",
+          "writable": true
+        },
+        {
+          "name": "program_identity"
+        },
+        {
+          "name": "vrf_program"
+        },
+        {
+          "name": "slot_hashes"
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "client_seed",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "player",
+          "writable": true
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Player",
+      "discriminator": [
+        205,
+        222,
+        112,
+        7,
+        165,
+        155,
+        206,
+        218
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "CharacterAlreadyExists",
+      "msg": "Character already exists"
+    }
+  ],
+  "types": [
+    {
+      "name": "Player",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "character_class",
+            "type": "u8"
+          },
+          {
+            "name": "vitality",
+            "type": "u8"
+          },
+          {
+            "name": "strength",
+            "type": "u8"
+          },
+          {
+            "name": "dexterity",
+            "type": "u8"
+          },
+          {
+            "name": "intelligence",
+            "type": "u8"
+          },
+          {
+            "name": "rarity",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
