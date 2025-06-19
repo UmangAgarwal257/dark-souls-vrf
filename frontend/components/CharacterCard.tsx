@@ -109,7 +109,7 @@ export default function CharacterCard({ character, isLoading }: CharacterCardPro
                     className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-lg p-4"
                   >
                     <p className="text-amber-300/80 italic text-lg">
-                      "{characterClass.description}"
+                      &ldquo;{characterClass.description}&rdquo;
                     </p>
                   </motion.div>
                 </div>

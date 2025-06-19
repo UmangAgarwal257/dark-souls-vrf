@@ -1,12 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion} from 'framer-motion';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { PublicKey } from '@solana/web3.js';
 import * as anchor from '@coral-xyz/anchor';
 import { useProgram } from '@/hooks/useProgram';
-import { Character, CHARACTER_CLASSES, RARITIES } from '@/types/character';
+import { Character} from '@/types/character';
 import CharacterCard from './CharacterCard';
 import StatsDisplay from './StatsDisplay';
 import CharacterHistory from './CharacterHistory';
