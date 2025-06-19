@@ -184,16 +184,16 @@ export default function CharacterGenerator() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-amber-900 relative overflow-hidden">
-      {/* Animated Background */}
+      {/* Reduced Background Elements */}
       <div className="absolute inset-0 opacity-20">
-        {[...Array(50)].map((_, i) => (
+        {[...Array(15)].map((_, i) => ( // Reduced from 50 to 15
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-amber-400 rounded-full"
-           initial={{ 
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200), 
-                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800) 
-              }}
+            initial={{ 
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200), 
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800) 
+            }}
             animate={{ 
               y: [null, Math.random() * window.innerHeight],
               opacity: [0, 1, 0]
@@ -207,44 +207,44 @@ export default function CharacterGenerator() {
         ))}
       </div>
 
-      {/* Top HUD Bar */}
+      {/* Compact Top HUD Bar */}
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="relative z-50 p-4"
+        className="relative z-50 p-2" // Reduced from p-4 to p-2
       >
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border border-amber-500/50 rounded-lg ">
-            <div className="flex justify-between items-center p-4">
-              {/* Title */}
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-600 rounded-lg flex items-center justify-center">
-                  <span className="text-2xl font-bold text-black">DS</span>
+          <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border border-amber-500/50 rounded-lg">
+            <div className="flex justify-between items-center p-3"> {/* Reduced from p-4 to p-3 */}
+              {/* Compact Title */}
+              <div className="flex items-center space-x-3"> {/* Reduced from space-x-4 to space-x-3 */}
+                <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-600 rounded-lg flex items-center justify-center"> {/* Reduced from w-12 h-12 to w-10 h-10 */}
+                  <span className="text-xl font-bold text-black">DS</span> {/* Reduced from text-2xl to text-xl */}
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold text-amber-400 tracking-wider">DARK SOULS</h1>
-                  <p className="text-amber-300/70 text-sm">VRF Character Genesis</p>
+                  <h1 className="text-xl font-bold text-amber-400 tracking-wider">DARK SOULS</h1> {/* Reduced from text-2xl to text-xl */}
+                  <p className="text-amber-300/70 text-xs">VRF Character Genesis</p> {/* Reduced from text-sm to text-xs */}
                 </div>
               </div>
 
-              {/* Wallet & Balance */}
-              <div className="flex items-center space-x-6 relative">
-                {/* SOL Balance Display */}
+              {/* Compact Wallet & Balance */}
+              <div className="flex items-center space-x-4 relative"> {/* Reduced from space-x-6 to space-x-4 */}
+                {/* Compact SOL Balance Display */}
                 {connected && (
-                  <div className="bg-gradient-to-r from-amber-900/50 to-orange-900/50 border border-amber-500/30 rounded-lg px-4 py-2">
+                  <div className="bg-gradient-to-r from-amber-900/50 to-orange-900/50 border border-amber-500/30 rounded-lg px-3 py-1.5"> {/* Reduced padding */}
                     <div className="flex items-center space-x-2">
-                      <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center">
+                      <div className="w-5 h-5 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center"> {/* Reduced from w-6 h-6 to w-5 h-5 */}
                         <span className="text-xs font-bold text-black">◎</span>
                       </div>
                       <div>
                         <p className="text-xs text-amber-300/70">Balance</p>
-                        <p className="text-amber-400 font-bold">{balance.toFixed(4)} SOL</p>
+                        <p className="text-amber-400 font-bold text-sm">{balance.toFixed(4)} SOL</p> {/* Added text-sm */}
                       </div>
                     </div>
                   </div>
                 )}
                 
-                {/* Wallet Button - Isolated container */}
+                {/* Wallet Button */}
                 <div>
                   <WalletMultiButton />
                 </div>
@@ -254,49 +254,49 @@ export default function CharacterGenerator() {
         </div>
       </motion.div>
 
-      {/* Main Content */}
-      <div className="relative z-10 p-4">
+      {/* Compact Main Content */}
+      <div className="relative z-10 p-2"> {/* Reduced from p-4 to p-2 */}
         <div className="max-w-7xl mx-auto">
           {!connected ? (
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="text-center py-20"
+              className="text-center py-12" // Reduced from py-20 to py-12
             >
-              <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-2xl p-12 ">
-                <div className="text-6xl mb-6">⚔️</div>
-                <h2 className="text-3xl text-amber-400 mb-4 font-bold">Enter the Abyss</h2>
-                <p className="text-amber-300/70 text-lg mb-8">Connect thy wallet to forge a character from the depths</p>
+              <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-2xl p-8"> {/* Reduced from p-12 to p-8 */}
+                <div className="text-4xl mb-4">⚔️</div> {/* Reduced from text-6xl mb-6 to text-4xl mb-4 */}
+                <h2 className="text-2xl text-amber-400 mb-3 font-bold">Enter the Abyss</h2> {/* Reduced from text-3xl mb-4 to text-2xl mb-3 */}
+                <p className="text-amber-300/70 text-base mb-6">Connect thy wallet to forge a character from the depths</p> {/* Reduced from text-lg mb-8 to text-base mb-6 */}
                 <div className="text-amber-500/50 text-sm">
                   "In the Age of Ancients, the world was unformed..."
                 </div>
               </div>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4"> {/* Reduced from gap-6 to gap-4 */}
               {/* Main Character Area - Takes 3 columns */}
-              <div className="xl:col-span-3 space-y-6">
+              <div className="xl:col-span-3 space-y-4"> {/* Reduced from space-y-6 to space-y-4 */}
                 {/* Character Display */}
                 <CharacterCard character={character} isLoading={isLoading} />
                 
-                {/* Generate Button */}
+                {/* Compact Generate Button */}
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.01 }} // Reduced from 1.02 to 1.01
+                  whileTap={{ scale: 0.99 }} // Reduced from 0.98 to 0.99
                   className="relative"
                 >
                   <button
                     onClick={generateCharacter}
                     disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 disabled:from-gray-600 disabled:to-gray-700 text-black font-bold py-6 px-8 rounded-lg text-xl transition-all duration-300 shadow-lg disabled:shadow-none border-2 border-amber-400/50 disabled:border-gray-500/50"
+                    className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 disabled:from-gray-600 disabled:to-gray-700 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 shadow-lg disabled:shadow-none border-2 border-amber-400/50 disabled:border-gray-500/50" // Reduced py-6 px-8 text-xl to py-4 px-6 text-lg
                   >
-                    <div className="flex items-center justify-center space-x-3">
+                    <div className="flex items-center justify-center space-x-2"> {/* Reduced from space-x-3 to space-x-2 */}
                       {isLoading ? (
                         <>
                           <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                            className="w-6 h-6"
+                            className="w-5 h-5" // Reduced from w-6 h-6 to w-5 h-5
                           >
                             🔥
                           </motion.div>
