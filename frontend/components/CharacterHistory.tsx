@@ -12,7 +12,7 @@ export default function CharacterHistory({ history }: CharacterHistoryProps) {
     <motion.div
       initial={{ x: 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border-2 border-amber-500/50 rounded-2xl p-6 backdrop-blur-sm"
+      className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border-2 border-amber-500/50 rounded-2xl p-6 relative"
     >
       {/* Header with Medieval Styling */}
       <div className="relative mb-6">

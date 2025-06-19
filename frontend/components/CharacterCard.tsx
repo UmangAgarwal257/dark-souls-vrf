@@ -19,7 +19,7 @@ export default function CharacterCard({ character, isLoading }: CharacterCardPro
       className="relative"
     >
       {/* Hexagonal Container */}
-      <div className="relative bg-gradient-to-br from-amber-900/30 to-orange-900/30 border-2 border-amber-500/50 rounded-3xl p-8 backdrop-blur-sm overflow-hidden">
+      <div className="relative bg-gradient-to-br from-amber-900/30 to-orange-900/30 border-2 border-amber-500/50 rounded-3xl p-8 overflow-hidden">
         
         {/* Rarity Glow Effect */}
         {character && rarity && (
@@ -96,7 +96,7 @@ export default function CharacterCard({ character, isLoading }: CharacterCardPro
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-                    className={`inline-block px-6 py-2 rounded-full ${rarity?.color} border-2 border-current bg-black/40 backdrop-blur-sm font-bold tracking-wide`}
+                    className={`inline-block px-6 py-2 rounded-full ${rarity?.color} border-2 border-current bg-black/40 font-bold tracking-wide`}
                   >
                     ✦ {rarity?.name.toUpperCase()} ✦
                   </motion.div>

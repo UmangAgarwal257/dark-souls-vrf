@@ -190,10 +190,10 @@ export default function CharacterGenerator() {
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-amber-400 rounded-full"
-            initial={{ 
-              x: Math.random() * window.innerWidth, 
-              y: Math.random() * window.innerHeight 
-            }}
+           initial={{ 
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200), 
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800) 
+              }}
             animate={{ 
               y: [null, Math.random() * window.innerHeight],
               opacity: [0, 1, 0]
@@ -211,10 +211,10 @@ export default function CharacterGenerator() {
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="relative z-10 p-4"
+        className="relative z-50 p-4"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border border-amber-500/50 rounded-lg backdrop-blur-sm">
+          <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border border-amber-500/50 rounded-lg ">
             <div className="flex justify-between items-center p-4">
               {/* Title */}
               <div className="flex items-center space-x-4">
@@ -228,7 +228,7 @@ export default function CharacterGenerator() {
               </div>
 
               {/* Wallet & Balance */}
-              <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-6 relative">
                 {/* SOL Balance Display */}
                 {connected && (
                   <div className="bg-gradient-to-r from-amber-900/50 to-orange-900/50 border border-amber-500/30 rounded-lg px-4 py-2">
@@ -244,8 +244,8 @@ export default function CharacterGenerator() {
                   </div>
                 )}
                 
-                {/* Wallet Button */}
-                <div className="wallet-button-container">
+                {/* Wallet Button - Isolated container */}
+                <div>
                   <WalletMultiButton />
                 </div>
               </div>
@@ -263,7 +263,7 @@ export default function CharacterGenerator() {
               animate={{ scale: 1, opacity: 1 }}
               className="text-center py-20"
             >
-              <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-2xl p-12 backdrop-blur-sm">
+              <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-2xl p-12 ">
                 <div className="text-6xl mb-6">⚔️</div>
                 <h2 className="text-3xl text-amber-400 mb-4 font-bold">Enter the Abyss</h2>
                 <p className="text-amber-300/70 text-lg mb-8">Connect thy wallet to forge a character from the depths</p>
