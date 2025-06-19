@@ -1,5 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Character, CHARACTER_CLASSES, RARITIES } from '@/types/character';
 
 interface CharacterHistoryProps {
@@ -39,7 +40,15 @@ export default function CharacterHistory({ history }: CharacterHistoryProps) {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="text-2xl">{characterClass.sprite}</div>
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-slate-500">
+                        <Image
+                          src={characterClass.sprite}
+                          alt={characterClass.name}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <div>
                         <div className="font-medium text-white">{characterClass.name}</div>
                         <div className={`text-xs ${rarity.color}`}>{rarity.name}</div>
@@ -94,7 +103,15 @@ export default function CharacterHistory({ history }: CharacterHistoryProps) {
         <div className="grid grid-cols-2 gap-2">
           {CHARACTER_CLASSES.map((charClass) => (
             <div key={charClass.id} className="flex items-center gap-2">
-              <span className="text-lg">{charClass.sprite}</span>
+              <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-500">
+                <Image
+                  src={charClass.sprite}
+                  alt={charClass.name}
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div>
                 <div className="text-sm text-white">{charClass.name}</div>
                 <div className="text-xs text-gray-400">25%</div>

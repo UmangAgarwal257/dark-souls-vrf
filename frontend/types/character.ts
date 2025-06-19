@@ -24,10 +24,10 @@ export interface Rarity {
 }
 
 export const CHARACTER_CLASSES: CharacterClass[] = [
-  { id: 0, name: 'Knight', sprite: '⚔️', description: 'A noble warrior with high vitality and strength' },
-  { id: 1, name: 'Sorcerer', sprite: '🔮', description: 'A master of magic with high intelligence' },
-  { id: 2, name: 'Pyromancer', sprite: '🔥', description: 'A balanced fighter wielding fire magic' },
-  { id: 3, name: 'Thief', sprite: '🗡️', description: 'A nimble rogue with high dexterity' },
+  { id: 0, name: 'Knight', sprite: '/knight.jpg', description: 'A noble warrior with high vitality and strength' },
+  { id: 1, name: 'Sorcerer', sprite: '/sorcerer.jpg', description: 'A master of magic with high intelligence' },
+  { id: 2, name: 'Pyromancer', sprite: '/pyromancer.jpg', description: 'A balanced fighter wielding fire magic' },
+  { id: 3, name: 'Thief', sprite: '/thief.jpg', description: 'A nimble rogue with high dexterity' },
 ];
 
 export const RARITIES: Rarity[] = [

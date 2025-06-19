@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Character, CHARACTER_CLASSES, RARITIES } from '@/types/character';
 
 interface CharacterCardProps {
@@ -38,9 +39,16 @@ export default function CharacterCard({ character, isLoading }: CharacterCardPro
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center border-4 border-slate-600"
+              className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-slate-600 bg-slate-800"
             >
-              <div className="text-6xl">{characterClass.sprite}</div>
+              <Image
+                src={characterClass.sprite}
+                alt={characterClass.name}
+                width={128}
+                height={128}
+                className="w-full h-full object-cover"
+                priority
+              />
             </motion.div>
           ) : (
             <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center border-4 border-slate-600">
