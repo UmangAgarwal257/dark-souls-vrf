@@ -14,81 +14,119 @@ export default function CharacterCard({ character, isLoading }: CharacterCardPro
 
   return (
     <motion.div
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700"
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="relative"
     >
-      {/* Rarity Glow Effect */}
-      {character && rarity && (
-        <div className={`absolute inset-0 rounded-2xl ${rarity.glowColor} shadow-2xl opacity-20`} />
-      )}
-      
-      <div className="relative z-10">
-        {/* Character Display */}
-        <div className="text-center mb-6">
-          {isLoading ? (
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center"
-            >
-              <div className="text-4xl">🌀</div>
-            </motion.div>
-          ) : character && characterClass ? (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-slate-600 bg-slate-800"
-            >
-              <Image
-                src={characterClass.sprite}
-                alt={characterClass.name}
-                width={128}
-                height={128}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </motion.div>
-          ) : (
-            <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center border-4 border-slate-600">
-              <div className="text-4xl text-slate-500">?</div>
-            </div>
-          )}
-
-          {/* Character Name */}
-          <motion.h2
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="text-3xl font-bold text-white mb-2"
-          >
-            {isLoading ? 'Generating...' : characterClass?.name || 'No Character'}
-          </motion.h2>
-
-          {/* Rarity Badge */}
-          {character && rarity && (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className={`inline-block px-4 py-2 rounded-full ${rarity.color} border border-current bg-black/20`}
-            >
-              {rarity.name}
-            </motion.div>
-          )}
-        </div>
-
-        {/* Character Description */}
-        {characterClass && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-gray-300 text-center text-sm"
-          >
-            {characterClass.description}
-          </motion.p>
+      {/* Hexagonal Container */}
+      <div className="relative bg-gradient-to-br from-amber-900/30 to-orange-900/30 border-2 border-amber-500/50 rounded-3xl p-8 backdrop-blur-sm overflow-hidden">
+        
+        {/* Rarity Glow Effect */}
+        {character && rarity && (
+          <div className={`absolute inset-0 ${rarity.glowColor} shadow-2xl opacity-30 rounded-3xl`} />
         )}
+        
+        {/* Corner Decorations */}
+        <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-amber-400/50"></div>
+        <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-amber-400/50"></div>
+        <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-amber-400/50"></div>
+        <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-amber-400/50"></div>
+        
+        <div className="relative z-10">
+          <div className="text-center">
+            {isLoading ? (
+              <div className="space-y-6">
+                <motion.div
+                  animate={{ 
+                    rotate: 360,
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    rotate: { duration: 3, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 2, repeat: Infinity }
+                  }}
+                  className="w-40 h-40 mx-auto relative"
+                >
+                  <div className="w-full h-full bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-full flex items-center justify-center border-4 border-amber-400/50">
+                    <div className="text-6xl">🔥</div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full blur-xl opacity-50"></div>
+                </motion.div>
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold text-amber-400">Communing with the Abyss...</h2>
+                  <p className="text-amber-300/70">The flames stir, shaping thy destiny</p>
+                </div>
+              </div>
+            ) : character && characterClass ? (
+              <div className="space-y-6">
+                {/* Character Portrait */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                  className="relative w-40 h-40 mx-auto"
+                >
+                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-amber-400/70 bg-gradient-to-br from-amber-900 to-orange-900 shadow-2xl">
+                    <Image
+                      src={characterClass.sprite}
+                      alt={characterClass.name}
+                      width={160}
+                      height={160}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
+                  {/* Portrait Glow */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/20 to-orange-400/20 blur-xl"></div>
+                </motion.div>
+
+                {/* Character Info */}
+                <div className="space-y-4">
+                  <motion.h2
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-4xl font-bold text-amber-400 tracking-wider"
+                  >
+                    {characterClass.name.toUpperCase()}
+                  </motion.h2>
+
+                  {/* Rarity Badge */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+                    className={`inline-block px-6 py-2 rounded-full ${rarity?.color} border-2 border-current bg-black/40 backdrop-blur-sm font-bold tracking-wide`}
+                  >
+                    ✦ {rarity?.name.toUpperCase()} ✦
+                  </motion.div>
+
+                  {/* Character Description */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-lg p-4"
+                  >
+                    <p className="text-amber-300/80 italic text-lg">
+                      "{characterClass.description}"
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6 py-12">
+                <div className="w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-4 border-gray-600 flex items-center justify-center">
+                  <div className="text-6xl text-gray-500">👤</div>
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-400 mb-2">Awaiting Summoning</h2>
+                  <p className="text-gray-500">The void calls for a soul to be born...</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </motion.div>
   );
