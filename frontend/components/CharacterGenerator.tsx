@@ -41,7 +41,7 @@ export default function CharacterGenerator() {
     if (!program || !getPlayerPDA) return;
     
     try {
-      const playerAccount = await (program.account as any).player.fetch(getPlayerPDA);
+      const playerAccount = await program.account.player.fetch(getPlayerPDA);
       const totalStats = playerAccount.vitality + playerAccount.strength + 
                         playerAccount.dexterity + playerAccount.intelligence;
       
@@ -71,7 +71,7 @@ export default function CharacterGenerator() {
     try {
       let playerExists = false;
       try {
-        await (program.account as any).player.fetch(getPlayerPDA);
+        await program.account.player.fetch(getPlayerPDA);
         playerExists = true;
       } catch (e) {
         // Player doesn't exist
@@ -127,7 +127,7 @@ export default function CharacterGenerator() {
         }
         
         try {
-          const playerAccount = await (program.account as any).player.fetch(getPlayerPDA);
+          const playerAccount = await program.account.player.fetch(getPlayerPDA);
           const totalStats = playerAccount.vitality + playerAccount.strength + 
                            playerAccount.dexterity + playerAccount.intelligence;
           
@@ -162,7 +162,7 @@ export default function CharacterGenerator() {
       console.error('Error generating character:', error);
       setIsLoading(false);
       
-      // Update balance even if there's an error (transaction might have been processed)
+     
       await fetchBalance();
     }
   };
@@ -186,7 +186,7 @@ export default function CharacterGenerator() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-amber-900 relative overflow-hidden">
       {/* Reduced Background Elements */}
       <div className="absolute inset-0 opacity-20">
-        {[...Array(15)].map((_, i) => ( // Reduced from 50 to 15
+        {[...Array(15)].map((_, i) => ( 
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-amber-400 rounded-full"
@@ -211,34 +211,34 @@ export default function CharacterGenerator() {
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="relative z-50 p-2" // Reduced from p-4 to p-2
+        className="relative z-50 p-2" 
       >
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border border-amber-500/50 rounded-lg">
-            <div className="flex justify-between items-center p-3"> {/* Reduced from p-4 to p-3 */}
+            <div className="flex justify-between items-center p-3"> 
               {/* Compact Title */}
-              <div className="flex items-center space-x-3"> {/* Reduced from space-x-4 to space-x-3 */}
-                <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-600 rounded-lg flex items-center justify-center"> {/* Reduced from w-12 h-12 to w-10 h-10 */}
-                  <span className="text-xl font-bold text-black">DS</span> {/* Reduced from text-2xl to text-xl */}
+              <div className="flex items-center space-x-3"> 
+                <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-600 rounded-lg flex items-center justify-center"> 
+                  <span className="text-xl font-bold text-black">DS</span> 
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-amber-400 tracking-wider">DARK SOULS</h1> {/* Reduced from text-2xl to text-xl */}
-                  <p className="text-amber-300/70 text-xs">VRF Character Genesis</p> {/* Reduced from text-sm to text-xs */}
+                  <h1 className="text-xl font-bold text-amber-400 tracking-wider">DARK SOULS</h1>
+                  <p className="text-amber-300/70 text-xs">VRF Character Genesis</p> 
                 </div>
               </div>
 
               {/* Compact Wallet & Balance */}
-              <div className="flex items-center space-x-4 relative"> {/* Reduced from space-x-6 to space-x-4 */}
+              <div className="flex items-center space-x-4 relative"> 
                 {/* Compact SOL Balance Display */}
                 {connected && (
-                  <div className="bg-gradient-to-r from-amber-900/50 to-orange-900/50 border border-amber-500/30 rounded-lg px-3 py-1.5"> {/* Reduced padding */}
+                  <div className="bg-gradient-to-r from-amber-900/50 to-orange-900/50 border border-amber-500/30 rounded-lg px-3 py-1.5"> 
                     <div className="flex items-center space-x-2">
-                      <div className="w-5 h-5 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center"> {/* Reduced from w-6 h-6 to w-5 h-5 */}
+                      <div className="w-5 h-5 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center"> 
                         <span className="text-xs font-bold text-black">◎</span>
                       </div>
                       <div>
                         <p className="text-xs text-amber-300/70">Balance</p>
-                        <p className="text-amber-400 font-bold text-sm">{balance.toFixed(4)} SOL</p> {/* Added text-sm */}
+                        <p className="text-amber-400 font-bold text-sm">{balance.toFixed(4)} SOL</p> 
                       </div>
                     </div>
                   </div>
@@ -260,27 +260,27 @@ export default function CharacterGenerator() {
       </motion.div>
 
       {/* Compact Main Content */}
-      <div className="relative z-10 p-1"> {/* Reduced from p-2 to p-1 */}
+      <div className="relative z-10 p-1"> 
         <div className="max-w-7xl mx-auto">
           {!connected ? (
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="text-center py-6" // Reduced from py-12 to py-6
+              className="text-center py-6" 
             >
-              <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-2xl p-4"> {/* Reduced from p-8 to p-4 */}
-                <div className="text-2xl mb-2">⚔️</div> {/* Reduced from text-4xl mb-4 to text-2xl mb-2 */}
-                <h2 className="text-xl text-amber-400 mb-2 font-bold">Enter the Abyss</h2> {/* Reduced from text-2xl mb-3 to text-xl mb-2 */}
-                <p className="text-amber-300/70 text-sm mb-4">Connect thy wallet to forge a character from the depths</p> {/* Reduced from text-base mb-6 to text-sm mb-4 */}
+              <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 border border-amber-500/30 rounded-2xl p-4"> 
+                <div className="text-2xl mb-2">⚔️</div> 
+                <h2 className="text-xl text-amber-400 mb-2 font-bold">Enter the Abyss</h2>
+                <p className="text-amber-300/70 text-sm mb-4">Connect thy wallet to forge a character from the depths</p>
                 <div className="text-amber-500/50 text-xs">
                   "In the Age of Ancients, the world was unformed..."
                 </div>
               </div>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 xl:grid-cols-5 gap-2"> {/* Changed from xl:grid-cols-4 to xl:grid-cols-5 */}
-              {/* Main Character Area - Takes 4 columns */}
-              <div className="xl:col-span-4 space-y-2"> {/* Changed from xl:col-span-3 to xl:col-span-4 */}
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-2"> {/* Changed from xl:grid-cols-5 back to xl:grid-cols-3 */}
+              {/* Main Character Area - Takes 2 columns */}
+              <div className="xl:col-span-2 space-y-2"> {/* Changed from xl:col-span-4 to xl:col-span-2 */}
                 {/* Character Display */}
                 <CharacterCard character={character} isLoading={isLoading} />
                 
@@ -329,7 +329,7 @@ export default function CharacterGenerator() {
 
               {/* Sidebar - Character History */}
               <div className="xl:col-span-1">
-                <div className="sticky top-1"> {/* Reduced from top-2 to top-1 */}
+                <div className="sticky top-1">
                   <CharacterHistory history={history} />
                 </div>
               </div>

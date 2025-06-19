@@ -45,7 +45,7 @@ function StatBar({ label, value, maxValue, color, bgColor, icon, delay }: StatBa
       </div>
       
       <div className="relative">
-        <div className="w-full bg-black/40 rounded-full h-2 overflow-hidden border border-amber-500/30"> {/* Reduced from h-4 to h-2 */}
+        <div className="w-full bg-black/40 rounded-full h-2 overflow-hidden border border-amber-500/30">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
@@ -58,9 +58,6 @@ function StatBar({ label, value, maxValue, color, bgColor, icon, delay }: StatBa
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
             />
           </motion.div>
-        </div>
-        <div className="absolute right-2 top-0 h-full flex items-center">
-          <span className="text-xs text-amber-300/70 font-mono">{percentage.toFixed(0)}%</span>
         </div>
       </div>
     </motion.div>
