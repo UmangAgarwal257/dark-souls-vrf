@@ -278,13 +278,10 @@ export default function CharacterGenerator() {
               </div>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-2"> {/* Changed from xl:grid-cols-5 back to xl:grid-cols-3 */}
-              {/* Main Character Area - Takes 2 columns */}
-              <div className="xl:col-span-2 space-y-2"> {/* Changed from xl:col-span-4 to xl:col-span-2 */}
-                {/* Character Display */}
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
+              <div className="xl:col-span-3 space-y-2">
                 <CharacterCard character={character} isLoading={isLoading} />
                 
-                {/* Compact Generate Button */}
                 <motion.div
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
@@ -317,19 +314,16 @@ export default function CharacterGenerator() {
                     </div>
                   </button>
                   
-                  {/* Button glow effect */}
                   {!isLoading && (
                     <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 rounded-lg blur-xl opacity-30 -z-10"></div>
                   )}
                 </motion.div>
 
-                {/* Stats Display */}
                 <StatsDisplay character={character} />
               </div>
 
-              {/* Sidebar - Character History */}
               <div className="xl:col-span-1">
-                <div className="sticky top-1">
+                <div className="sticky top-2">
                   <CharacterHistory history={history} />
                 </div>
               </div>
