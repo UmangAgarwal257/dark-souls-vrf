@@ -45,7 +45,7 @@ function StatBar({ label, value, maxValue, color, bgColor, icon, delay }: StatBa
       </div>
       
       <div className="relative">
-        <div className="w-full bg-black/40 rounded-full h-4 overflow-hidden border border-amber-500/30">
+        <div className="w-full bg-black/40 rounded-full h-2 overflow-hidden border border-amber-500/30"> {/* Reduced from h-4 to h-2 */}
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
@@ -99,14 +99,14 @@ export default function StatsDisplay({ character }: StatsDisplayProps) {
         className="text-center"
       >
         <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border border-amber-500/50 rounded-lg p-4 backdrop-blur-sm">
-          <h3 className="text-2xl font-bold text-amber-400 mb-2 tracking-wider">⚔️ SOUL ATTRIBUTES ⚔️</h3>
+          <h3 className="text-xl font-bold text-amber-400 mb-2 tracking-wider">⚔️ SOUL ATTRIBUTES ⚔️</h3>
           <div className="flex items-center justify-center gap-2">
             <span className="text-amber-300/70">Total Power:</span>
             <motion.span 
               key={totalStats}
               initial={{ scale: 1.5 }}
               animate={{ scale: 1 }}
-              className="text-2xl font-bold text-amber-400"
+              className="text-xl font-bold text-amber-400"
             >
               {totalStats}
             </motion.span>
