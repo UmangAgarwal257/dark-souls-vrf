@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { motion} from 'framer-motion';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { PublicKey } from '@solana/web3.js';
 import * as anchor from '@coral-xyz/anchor';
 import { useProgram } from '@/hooks/useProgram';
+import { vrfRequestAccounts } from '@/lib/vrf';
 import { Character} from '@/types/character';
 import CharacterCard from './CharacterCard';
 import StatsDisplay from './StatsDisplay';
@@ -13,7 +13,7 @@ import CharacterHistory from './CharacterHistory';
 
 export default function CharacterGenerator() {
   const { connected } = useWallet();
-  const { program, getPlayerPDA, publicKey } = useProgram();
+  const { program, getPlayerPDA, publicKey, programId } = useProgram();
   const [character, setCharacter] = useState<Character | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [history, setHistory] = useState<Character[]>([]);
@@ -100,16 +100,10 @@ export default function CharacterGenerator() {
       
       await program.methods
         .generateCharacter(clientSeed)
-        .accounts({
-          payer: publicKey,
-          player: getPlayerPDA,
-          oracleQueue: new PublicKey('Cuj97ggrhhidhbu39TijNVqE74xvKJ69gDervRUXAxGh'),
-          programIdentity: new PublicKey('6tAHXcHybiBxf8xeXMrw6Z5VfATFLtxA54Ug6ATnnxPc'),
-          vrfProgram: new PublicKey('Vrf1RNUjXmQGjmQrQLvJHs9SNkvDJEsRVFPkfSQUwGz'),
-          slotHashes: anchor.web3.SYSVAR_SLOT_HASHES_PUBKEY,
-          systemProgram: anchor.web3.SystemProgram.programId,
-        })
-        .rpc();
+        .accountsPartial(
+          vrfRequestAccounts(programId, publicKey, getPlayerPDA),
+        )
+        .rpc({ skipPreflight: true, commitment: 'confirmed' });
 
       console.log('Character generation transaction sent');
       

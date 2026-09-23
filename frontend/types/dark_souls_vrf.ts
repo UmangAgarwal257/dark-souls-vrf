@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/dark_souls_vrf.json`.
  */
 export type DarkSoulsVrf = {
-  "address": "3yFrLcHmwCpNjeSR4sFNVd1K3BTzwVc3Nz13ToeHnRfs",
+  "address": "7ZUUFi38cG3QT3n58THDDNwPVT7AoQmX79o3cGT9GQgr",
   "metadata": {
     "name": "darkSoulsVrf",
     "version": "0.1.0",
@@ -28,6 +28,10 @@ export type DarkSoulsVrf = {
       "accounts": [
         {
           "name": "vrfProgramIdentity",
+          "docs": [
+            "Scoped VRF identity PDA, bound to this program. Its presence as a signer proves",
+            "the callback was issued by the VRF program for this program."
+          ],
           "signer": true
         },
         {
@@ -44,6 +48,10 @@ export type DarkSoulsVrf = {
               32
             ]
           }
+        },
+        {
+          "name": "clientSeed",
+          "type": "u8"
         }
       ]
     },

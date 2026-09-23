@@ -1,6 +1,6 @@
 # ⚔️ Dark Souls Character Generator
 
-Dark Souls themed character generator using MagicBlock verifiable random function (VRF) to generate random character stats and classes. This is extended from the [MagicBlock roll dice example](https://github.com/magicblock-labs/magicblock-vrf-example).
+Dark Souls themed character generator using MagicBlock verifiable random function (VRF) to generate random character stats and classes. This is extended from the [MagicBlock roll dice example](https://github.com/magicblock-labs/magicblock-engine-examples/tree/main/roll-dice).
 
 # Demo
 
@@ -22,23 +22,25 @@ This program has utilized the following software packages.
 
 | Software   | Version | Installation Guide                                              |
 | ---------- | ------- | --------------------------------------------------------------- |
-| **Solana** | 2.1.18  | [Install Solana](https://docs.anza.xyz/cli/install)             |
-| **Rust**   | 1.86.0  | [Install Rust](https://www.rust-lang.org/tools/install)         |
-| **Anchor** | 0.31.1  | [Install Anchor](https://www.anchor-lang.com/docs/installation) |
+| **Solana** | 3.1.9   | [Install Solana](https://docs.anza.xyz/cli/install)             |
+| **Rust**   | 1.89.0  | [Install Rust](https://www.rust-lang.org/tools/install)         |
+| **Anchor** | 1.0.2   | [Install Anchor](https://www.anchor-lang.com/docs/installation) |
 
 ```sh
 # Check and initialize your Solana version
 agave-install list
-agave-install init 2.1.18
+agave-install init 3.1.9
 
 # Check and initialize your Rust version
 rustup show
-rustup install 1.86.0
+rustup install 1.89.0
 
 # Check and initialize your Anchor version
 avm list
-avm use 0.31.1
+avm use 1.0.2
 ```
+
+The on-chain program uses scoped VRF via `ephemeral-rollups-sdk` (`create_request_scoped_randomness_ix`, `#[vrf]`, `#[vrf_callback]`). Tests and the frontend use the MagicBlock devnet RPC (`https://rpc.magicblock.app/devnet`).
 
 ## ✨ Build and Test
 
@@ -98,7 +100,7 @@ The application will be available at `http://localhost:3000` (or another port if
 
 ## 🏗️ Program Details
 
-- **Program ID**: `3yFrLcHmwCpNjeSR4sFNVd1K3BTzwVc3Nz13ToeHnRfs`
+- **Program ID**: `7ZUUFi38cG3QT3n58THDDNwPVT7AoQmX79o3cGT9GQgr`
 - **Network**: Solana Devnet
 - **VRF Provider**: MagicBlock VRF
 - **Frontend Framework**: Next.js with TypeScript

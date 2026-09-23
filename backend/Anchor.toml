@@ -1,25 +1,26 @@
 [toolchain]
 package_manager = "yarn"
+anchor_version = "1.0.2"
 
 [features]
 resolution = false
 skip-lint = false
 
 [programs.devnet]
-dark_souls_vrf = "3yFrLcHmwCpNjeSR4sFNVd1K3BTzwVc3Nz13ToeHnRfs"
+dark_souls_vrf = "7ZUUFi38cG3QT3n58THDDNwPVT7AoQmX79o3cGT9GQgr"
 
 [programs.localnet]
-dark_souls_vrf = "3yFrLcHmwCpNjeSR4sFNVd1K3BTzwVc3Nz13ToeHnRfs"
+dark_souls_vrf = "7ZUUFi38cG3QT3n58THDDNwPVT7AoQmX79o3cGT9GQgr"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "https://rpc.magicblock.app/devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "yarn mocha -r ts-node/register -t 10000 tests/**/*.ts"
+test = "yarn mocha -r ts-node/register -t 120000 tests/**/*.ts"
 
 [test]
 startup_wait = 5000
@@ -28,6 +29,6 @@ upgradeable = false
 
 [test.validator]
 bind_address = "0.0.0.0"
-url = "https://api.devnet.solana.com"
+url = "https://rpc.magicblock.app/devnet"
 ledger = ".anchor/test-ledger"
 rpc_port = 8899

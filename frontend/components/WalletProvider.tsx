@@ -3,12 +3,12 @@ import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
 import { useMemo } from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
+import { MAGICBLOCK_DEVNET_RPC } from '@/lib/vrf';
 
 const network = WalletAdapterNetwork.Devnet;
-const endpoint = clusterApiUrl(network);
+const endpoint = MAGICBLOCK_DEVNET_RPC;
 
 export default function WalletContextProvider({
   children,

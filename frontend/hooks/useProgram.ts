@@ -6,7 +6,7 @@ import { PublicKey } from '@solana/web3.js';
 import { DarkSoulsVrf } from '@/types/dark_souls_vrf';
 import idl from '@/types/dark_souls_vrf.json';
 
-const PROGRAM_ID = new PublicKey('3yFrLcHmwCpNjeSR4sFNVd1K3BTzwVc3Nz13ToeHnRfs');
+const PROGRAM_ID = new PublicKey('7ZUUFi38cG3QT3n58THDDNwPVT7AoQmX79o3cGT9GQgr');
 
 export function useProgram() {
   const { connection } = useConnection();
